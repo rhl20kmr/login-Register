@@ -1,0 +1,68 @@
+<h2>Register List Form</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" class="form-control" required/>
+        
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" class="form-control"  required/>
+        
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" formControlName="phone" class="form-control" required/>
+        
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" formControlName="city" class="form-control" required/>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Submit
+        </button>
+        <a (click)="cancelForm()" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+<br>
+
+<div class="container">
+  <h1>Register List detail in grid</h1>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>City</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let registDetails of registerList">
+
+          <td>{{ registDetails.id }}</td>
+
+        <td>{{ registDetails.name }}</td>
+
+        <td>{{ registDetails.email }}</td>
+
+        <td>{{ registDetails.phone }}</td>
+
+        <td>{{ registDetails.city }}</td>
+        <td><a (click)="deleteUser(registDetails.id)">Delete</a></td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
